@@ -24,3 +24,9 @@
 
 [xgyai.top](https://xgyai.top)
 
+
+
+## 🙏鸣谢
+
+[Grt1228 的chatgpt-java](https://github.com/Grt1228/chatgpt-java)  的开源SDK
+
