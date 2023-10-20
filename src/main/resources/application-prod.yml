@@ -1,0 +1,60 @@
+# 线上配置文件
+# 
+# 
+server:
+  port: 8101
+spring:
+  # 数据库配置
+  # todo 需替换配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wake?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+  # Redis 配置
+  # todo 需替换配置
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    timeout: 5000
+    password: 123456
+    #rabbitmq 配置
+  rabbitmq:
+    port: 5672
+    host: localhost
+    password: admin
+    username: admin
+    listener:
+      direct:
+        acknowledge-mode: manual
+        retry:
+          enabled: true
+          max-interval: 600000
+          initial-interval: 5000 #初始间隔为5s
+          max-attempts: 30 # 最大尝试次数
+          multiplier: 1 #重试间隔的乘数
+        #开启重试机制
+      simple:
+        acknowledge-mode: manual #手动确认
+        retry:
+          enabled: true
+          max-interval: 600000
+          initial-interval: 5000 #初始间隔为5s
+          max-attempts: 30 # 最大尝试次数
+          multiplier: 1 #重试间隔的乘数
+
+    publisher-confirm-type: correlated #发布消息成功到交换器后会触发回调方法
+    publisher-returns: true #消息已经投递给交换机，但路由到队列的过程中失败了，返回 ack 和路由失败原因
+    template:
+      mandatory: true #当消息传递过程中不可达目的地时将消息返回给生产者。即回退消息
+  # Elasticsearch 配置
+  # todo 需替换配置
+#  elasticsearch:
+#    uris: http://localhost:9200
+#    username: localhost
+#    password: 123456
+mybatis-plus:
+  configuration:
+    # 生产环境关闭日志
+    log-impl: ''
