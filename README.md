@@ -2,7 +2,7 @@
 
 ## 技术选型
 
-- Java Spring Boot（万用后端模板）
+- Java Spring Boot
 - MySQL 数据库
 - MyBatis-Plus 及 MyBatis X 自动生成
 - Redis + Redisson 限流
